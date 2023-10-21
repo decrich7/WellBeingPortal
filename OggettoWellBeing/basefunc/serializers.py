@@ -15,11 +15,13 @@ class EventSerializer(serializers.ModelSerializer):
     expert_info = serializers.CharField(source='expert.info')
     expert_fio = serializers.CharField(source='expert.fio')
     expert_links = serializers.CharField(source='expert.links')
+    club = serializers.CharField(source='club.name')
+
 
     class Meta:
         model = Event
         fields = (
-            'id', 'name', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
+            'id', 'name', 'info', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user', 'club')
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
