@@ -1,7 +1,6 @@
 import React from 'react';
 import './output.css';
 import Header from "./components/headers/Header";
-import Body from "./components/body/Body";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MyEventList from "./components/lists/MyEventList";
 import MyRegisterForm from "./components/forms/MyRegisterForm";
