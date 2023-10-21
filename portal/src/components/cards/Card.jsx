@@ -34,7 +34,7 @@ const Card = ({...props}) => {
                                 {props.cardElement.expert_fio}
                             </div>
                             <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm ">
-                                {props.cardElement.topic}
+                                {props.cardElement.club}
                             </div>
                         </div>
                     </Link>
@@ -53,7 +53,7 @@ const Card = ({...props}) => {
         )
     } else {
         return (
-            <div className={"max-w-1/4 mb-8 " + statusDict[props.cardElement.statusPlace]}>
+            <div className={"max-w-1/4 mb-8 " + statusDict[props.cardElement.status]}>
                 <div
                     className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                     <div>
@@ -70,10 +70,10 @@ const Card = ({...props}) => {
                                 {props.cardElement.info}
                             </div>
                             <div className="text-gray-500 mb-3">
-                                {props.cardElement.expert}
+                                {props.cardElement.expert_fio}
                             </div>
                             <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm">
-                                {props.cardElement.topic}
+                                {props.cardElement.club}
                             </div>
                         </div>
                     </Link>
