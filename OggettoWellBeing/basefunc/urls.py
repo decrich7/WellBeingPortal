@@ -12,5 +12,5 @@ router.register(r'expert', ExpertViewSet)
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
-    path('api/v1/club-api/', ClubAPI.as_view())
+    path('api/v1/club-api/<int:pk>', ClubAPI.as_view())
 ]

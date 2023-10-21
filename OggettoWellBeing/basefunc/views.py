@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 
 from api_authentication.models import User
 from .models import Event, Club, Quest, Expert
-from .serializers import EventSerializer, TopicSerializer, ClubSerializer, QuestSerializer, ExpertSerializer
+from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):

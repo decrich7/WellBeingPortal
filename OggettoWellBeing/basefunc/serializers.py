@@ -1,6 +1,6 @@
 from django.conf import settings
 from rest_framework import serializers
-from .models import Event, Topic, Expert, Club, Quest
+from .models import Event, Expert, Club, Quest
 from api_authentication.models import User
 
 
@@ -28,7 +28,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = (
-            'id', 'name','shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
+            'id', 'name', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
 
 
 # class TopicSerializer(serializers.ModelSerializer):
