@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     topic = serializers.CharField(source='topic.name')
-    user = UserSerializer(many=True, read_only=True)
+    user = UserSerializer(many=True)
 
     expert_info = serializers.CharField(source='expert.info')
     expert_fio = serializers.CharField(source='expert.fio')
@@ -45,25 +45,15 @@ class ExpertSerializer(serializers.ModelSerializer):
 
 
 class ClubSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=True, read_only=True)
-
-    def update(self, instance: Club, validated_data: dict):
-        print(instance)
-        print(validated_data)
-        # instance.user = validated_data.get('user')
-        # instance.user =
-        instance.name = validated_data.get('name', instance.name)
-
-        instance.save()
-        return instance
+    user = UserSerializer(many=True, required=False)
 
     class Meta:
         model = Club
-        fields = ('name', 'info', 'photo', 'user')
+        fields = ('name', 'info', 'user')
 
 
 class QuestSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=True, read_only=True)
+    user = UserSerializer(many=True)
 
     class Meta:
         model = Quest
