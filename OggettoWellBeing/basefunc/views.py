@@ -57,9 +57,23 @@ class EventAPI(APIView):
         current_event: Union[Club, None] = Event.objects.get(pk=kwargs.get("pk"))
         user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
         current_event.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
-                                                      "last_name": user.last_name})
+                                                       "last_name": user.last_name})
 
         serializator = EventSerializer(current_event)
+        return JsonResponse({
+            **serializator.data
+        })
+
+
+class QuestAPI(APIView):
+    def post(self, request, **kwargs):
+        query_data: dict = request.data
+        current_quest: Union[Club, None] = Quest.objects.get(pk=kwargs.get("pk"))
+        user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
+        current_quest.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
+                                                       "last_name": user.last_name})
+
+        serializator = QuestSerializer(current_quest)
         return JsonResponse({
             **serializator.data
         })
