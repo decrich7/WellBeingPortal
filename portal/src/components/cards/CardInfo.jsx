@@ -4,8 +4,17 @@ import {useParams} from "react-router-dom";
 const CardInfo = ({...props}) => {
     const params = useParams()
     const id = parseInt(params.id)
-    const curEvent = props.listEvent.filter((el) => el.id === id)[0]
+    const request = new XMLHttpRequest();
+    const url = 'http://127.0.0.1:8000/api/v1/event/';
+    console.log(url + id.toString())
+    request.open("GET", url + id.toString(), false); // false makes the request synchronous
+    request.send(null);
+    let curEvent;
 
+    if (request.status === 200) {
+        curEvent = JSON.parse(request.responseText);
+    }
+    console.log(curEvent)
     return (<div className="CardInformations items-start w-full">
         <div>
             {curEvent.name}
@@ -20,13 +29,13 @@ const CardInfo = ({...props}) => {
                     />
                 </video>
             </div>
-            {(curEvent.typeEvent == "stream") ? (
+            {(curEvent.status === 2) ? (
                 <div className="Chat w-[30%] place-self-end">
                     Тут чат
                 </div>
-                ) : (
-                    <></>
-                )}
+            ) : (
+                <></>
+            )}
             <div>
                 {curEvent.info}
             </div>

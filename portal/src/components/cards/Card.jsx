@@ -6,9 +6,9 @@ import {Link} from "react-router-dom";
 
 const Card = ({...props}) => {
     let statusDict = {
-        true: "opacity-100",
-        false: "opacity-70",
-        "isLive": ""
+        1: "opacity-100",
+        3: "opacity-50",
+        2: "opacity-100"
     }
 
     if (props.typeView == "list") {
@@ -43,7 +43,7 @@ const Card = ({...props}) => {
                             {props.cardElement.shedule}
                         </div>
                     </div>
-                    {props.cardElement.statusPlace === "isLive" ? (
+                    {props.cardElement.status === 2 ? (
                         <div className="bg-red-900 text-white rounded-full text-center justify-self-end p-1 max-w-sm">
                             В эфире
                         </div>
@@ -82,7 +82,7 @@ const Card = ({...props}) => {
                         <div className="text-right flex items-end">
                             {props.cardElement.shedule}
                         </div>
-                        {props.cardElement.statusPlace === "isLive" ? (
+                        {props.cardElement.status === 2 ? (
                             <div
                                 className="bg-red-900 text-white rounded-full text-center justify-self-end p-1 max-w-sm">
                                 В эфире
