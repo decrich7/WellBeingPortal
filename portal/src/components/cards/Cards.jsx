@@ -5,7 +5,7 @@ import Card from "./Card";
 const Cards = ({...props}) => {
     return (
         <div>
-            {props.typeView == "list" ? (
+            {props.typeView === "list" ? (
                 <div className="flex flex-wrap justify-center items-stretch content-normal">
                     {
                         props.cardList.map((el, index) => (
