@@ -1,13 +1,20 @@
+from django.conf import settings
 from rest_framework import serializers
-from rest_framework.parsers import JSONParser
-from rest_framework.renderers import JSONRenderer
+from .models import Event, Topic, Expert, Club, Quest, ClubMember, UserQuest
 
-from .models import Event, Topic, Expert, Club, Quest
+
+# class UserSerializer(serializers.ModelSerializer):
+#     # email = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
+#     # print(email)
+#     class Meta:
+#         model = settings.AUTH_USER_MODEL
+#         fields = ('email', 'first_name', 'last_name')
 
 
 class EventSerializer(serializers.ModelSerializer):
     topic = serializers.CharField(source='topic.name')
-    schedule = serializers.DateTimeField(source='shedule')
+    # user = UserSerializer(many=True, read_only=True)
+
     expert_info = serializers.CharField(source='expert.info')
     expert_fio = serializers.CharField(source='expert.fio')
     expert_links = serializers.CharField(source='expert.links')
@@ -16,12 +23,26 @@ class EventSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.status = validated_data.get('status', instance.status)
+
         instance.save()
         return instance
 
     class Meta:
         model = Event
-        fields = ('id', 'name', 'topic', 'schedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status')
+        fields = (
+            'id', 'name', 'topic', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status')
+
+
+class ClubMemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClubMember
+        fields = "__all__"
+
+
+class UserQuestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserQuest
+        fields = "__all__"
 
 
 class TopicSerializer(serializers.ModelSerializer):

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -69,3 +70,13 @@ class Quest(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ClubMember(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+    club = models.ForeignKey(Club, on_delete=models.CASCADE, verbose_name='Клуб')
+
+
+class UserQuest(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, verbose_name='Квесты')
