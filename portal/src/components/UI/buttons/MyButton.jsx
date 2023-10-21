@@ -1,10 +1,8 @@
 import React from 'react';
-import "../../../output.css"
-const MyButton = () => {
+import "../../../output.css";
+const MyButton = ({...props}) => {
     return (
-         <div>
-        <button className="flex mx-auto mt-6 text-white bg-red-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
-      </div>
+        <button {...props} className={"text-white mt-5 border-0 py-2 px-2 opacity-80 transition duration-300 ease-in-out hover:opacity-100 rounded " + props.color}>{props.value}</button>
     );
 };
 
