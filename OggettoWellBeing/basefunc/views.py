@@ -5,8 +5,9 @@ from rest_framework import generics, viewsets, serializers
 from rest_framework.views import APIView
 
 from api_authentication.models import User
-from .models import Event, Club, Quest, Expert
-from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, UserSerializer
+from .models import Event, Club, Quest, Expert, Feedback
+from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, UserSerializer, \
+    FeedbackSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -18,13 +19,6 @@ class ClubViewSet(viewsets.ModelViewSet):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
 
-    def update(self, request, *args, **kwargs):
-        club = self.get_object()
-        print(args)
-        print(kwargs)
-        club.user.clear()
-        return super().update(request, *args, **kwargs)
-
 
 class QuestViewSet(viewsets.ModelViewSet):
     queryset = Quest.objects.all()
@@ -34,6 +28,11 @@ class QuestViewSet(viewsets.ModelViewSet):
 class ExpertViewSet(viewsets.ModelViewSet):
     queryset = Expert.objects.all()
     serializer_class = ExpertSerializer
+
+
+class FeedbackViewSet(viewsets.ModelViewSet):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
 
 
 class ClubAPI(APIView):

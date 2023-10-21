@@ -11,6 +11,14 @@ choices = (
     (3, 'Прошло')
 )
 
+rating = (
+    (1, 'Не понравилось'),
+    (2, 'Не совсем понравилось...'),
+    (3, 'Можно было и лучше'),
+    (4, 'В принципе неплохо.'),
+    (5, 'Всем доволен!')
+)
+
 
 # class Topic(models.Model):
 #     name = models.CharField(max_length=255, verbose_name='Имя')
@@ -73,3 +81,13 @@ class Quest(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Feedback(models.Model):
+    comment = models.CharField(max_length=255, verbose_name="Комментарий")
+    rating = models.IntegerField(verbose_name='Статус', choices=rating)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Событие')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+
+    def __str__(self):
+        return f'{self.rating} - {self.user.first_name}'

@@ -1,6 +1,6 @@
 from django.conf import settings
 from rest_framework import serializers
-from .models import Event, Expert, Club, Quest
+from .models import Event, Expert, Club, Quest, Feedback
 from api_authentication.models import User
 
 
@@ -31,10 +31,15 @@ class EventSerializer(serializers.ModelSerializer):
             'id', 'name', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
 
 
-# class TopicSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Topic
-#         fields = "__all__"
+class FeedbackSerializer(serializers.ModelSerializer):
+    event_name = serializers.CharField(source='event.name')
+    expert_fio = serializers.CharField(source='event.expert.fio')
+    user_first_name = serializers.CharField(source='user.first_name')
+    user_last_name = serializers.CharField(source='user.last_name')
+
+    class Meta:
+        model = Feedback
+        fields = ('event_name', 'user_first_name', 'user_last_name', 'comment', 'rating', 'expert_fio')
 
 
 class ExpertSerializer(serializers.ModelSerializer):
