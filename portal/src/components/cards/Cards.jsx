@@ -8,7 +8,7 @@ const Cards = ({...props}) => {
             {props.typeView == "list" ? (
                 <div className="flex flex-wrap justify-center items-stretch content-normal">
                     {
-                        props.EventList.map((el, index) => (
+                        props.cardList.map((el, index) => (
                                 <Card cardElement={el} key={index} typeView={props.typeView}/>
                             )
                         )
@@ -17,7 +17,7 @@ const Cards = ({...props}) => {
             ) : (
                 <div className="flex flex-col justify-center items-stretch">
                     {
-                        props.EventList.map((el, index) => (
+                        props.cardList.map((el, index) => (
                                 <Card cardElement={el} key={index} typeView={props.typeView}/>
                             )
                         )

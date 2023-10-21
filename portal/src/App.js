@@ -102,8 +102,20 @@ function App() {
                         </div>
                     )}>
                     </Route>
-
-
+                </Route>
+                <Route path="/clubs" element={
+                    <div className="App flex justify-center space-y-4">
+                        <div className="flex items-center flex-col justify-center w-5/6">
+                            <Header></Header>
+                        </div>
+                    </div>}>
+                </Route>
+                <Route path="/quests" element={
+                    <div className="App flex justify-center space-y-4">
+                        <div className="flex items-center flex-col justify-center w-5/6">
+                            <Header></Header>
+                        </div>
+                    </div>}>
                 </Route>
 
             </Routes>

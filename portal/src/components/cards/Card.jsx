@@ -13,7 +13,7 @@ const Card = ({...props}) => {
 
     if (props.typeView == "list") {
         return (
-            <div className={"max-w-1/4 mb-8 " + statusDict[props.cardElement.statusPlace]}>
+            <div className={"max-w-1/4 mb-8 " + statusDict[props.cardElement.status]}>
                 <div
                     className="flex sm:flex-col flex-col items-center sm:justify-start justify-center text-center sm:text-left content-normal">
                     <div>
