@@ -1,13 +1,12 @@
 from typing import Union
-
 from django.http import JsonResponse
-from rest_framework import generics, viewsets, serializers
+from rest_framework import viewsets
 from rest_framework.views import APIView
 
 from api_authentication.models import User
-from .models import Event, Club, Quest, Expert, Feedback
-from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, UserSerializer, \
-    FeedbackSerializer
+from .models import Event, Club, Quest, Expert, Feedback, MeetMaterials
+from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, \
+    FeedbackSerializer, VideoSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -76,3 +75,8 @@ class QuestAPI(APIView):
         return JsonResponse({
             **serializator.data
         })
+
+
+class VideoViewSet(viewsets.ModelViewSet):
+    queryset = MeetMaterials.objects.all()
+    serializer_class = VideoSerializer

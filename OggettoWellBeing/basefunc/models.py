@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.db import models
 
@@ -54,11 +56,18 @@ class Event(models.Model):
     photo = models.ImageField(upload_to='img/event', null=True, verbose_name='Фото')
     status = models.IntegerField(verbose_name='Статус', choices=choices, null=True)
     user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    link = models.CharField(max_length=200, verbose_name='Ссылка на мероприятие', default='youtube.com')
+    text_materials = models.CharField(max_length=200, verbose_name='Ссылка на доп. материалы', default='7-8')
 
     # status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
+
+
+class MeetMaterials(models.Model):
+    video = models.FileField(upload_to='video-lecture/%Y/%m/%d/', verbose_name='Запись встречи')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Событие')
 
 
 class Club(models.Model):

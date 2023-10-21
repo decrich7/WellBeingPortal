@@ -1,6 +1,5 @@
-from django.conf import settings
 from rest_framework import serializers
-from .models import Event, Expert, Club, Quest, Feedback
+from .models import Event, Expert, Club, Quest, Feedback, MeetMaterials
 from api_authentication.models import User
 
 
@@ -62,3 +61,9 @@ class QuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quest
         fields = ('name', 'info', 'target', 'deadline', 'photo', 'user')
+
+
+class VideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MeetMaterials
+        fields = '__all__'
