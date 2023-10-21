@@ -36,14 +36,30 @@ let cardsList = [
     },
 ]
 
-const Cards = () => {
+const Cards = (...props) => {
     return (
-        <div className="flex flex-wrap justify-center items-stretch">
+        <div>
+            {props[0].typeView == "list" ? (
+                <div className="flex flex-wrap justify-center items-stretch">
+                    {
+                        cardsList.map((el, index) => (
+                                <Card cardElement={el} key={index} typeView={props[0].typeView}/>
+                            )
+                        )
+                    }
+                </div>
+            ) : (
+                <div className="flex flex-col justify-center items-stretch">
+                    {
+                        cardsList.map((el, index) => (
+                                <Card cardElement={el} key={index} typeView={props[0].typeView}/>
+                            )
+                        )
+                    }
+                </div>
+            )
+            }
 
-            {cardsList.map( (el, index) => (
-                        <Card cardElement={el} key={index}/>
-                    )
-                )}
         </div>
     )
 }
