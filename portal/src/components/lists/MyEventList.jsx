@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MyGridListButton from "../UI/buttons/MyGridListButton";
 import Cards from "../cards/Cards";
 
@@ -11,9 +11,9 @@ const MyEventList = () => {
             <MyGridListButton setViewMode={setViewMode} viewMode={viewMode}></MyGridListButton>
             <div className="text-center items-center justify-center">
                 {viewMode === "list" ? (
-                    <Cards typeView={viewMode}/>
+                    <Cards  typeView={viewMode}/>
                 ) : (
-                    <Cards typeView={viewMode}></Cards>
+                    <Cards  typeView={viewMode}></Cards>
                 )}
             </div>
         </div>
