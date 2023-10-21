@@ -7,6 +7,7 @@ import MyEventList from "./components/lists/MyEventList";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import MyLoginForm from "./components/forms/MyLoginForm";
 import MyRegisterForm from "./components/forms/MyRegisterForm";
+import Cards from "./components/cards/Cards";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                             <Header></Header>
                             <MySlider></MySlider>
                             <MyEventList></MyEventList>
+
                         </div>
                     </div>
                 )}>

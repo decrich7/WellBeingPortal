@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import MyGridListButton from "../UI/buttons/MyGridListButton";
+import Cards from "../cards/Cards";
 
 const MyEventList = () => {
     const [viewMode, setViewMode] = useState("list");
@@ -29,9 +30,7 @@ const MyEventList = () => {
                         ))}
                     </ul>
                 ) : (
-                    <div className="grid grid-cols-3">{data.map((item) => (
-                        <div key={item.id}>{item.name}</div>
-                    ))}</div>
+                    <Cards></Cards>
                 )}
             </div>
         </div>
