@@ -6,9 +6,10 @@ from basefunc.models import *
 
 admin.site.register(Expert)
 admin.site.register(Event)
-admin.site.register(Schedule)
 admin.site.register(Topic)
-# admin.site.register(Status)
+admin.site.register(Club)
+admin.site.register(Quest)
+
 
 
 

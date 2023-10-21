@@ -4,8 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
 
-
-
 choices = (
     (1, 'Будет'),
     (2, 'Идет'),
@@ -14,18 +12,14 @@ choices = (
 
 
 class Topic(models.Model):
-    name = models.CharField(max_length=255)
-    info = models.CharField(max_length=500, null=True)
+    name = models.CharField(max_length=255, verbose_name='Имя')
+    info = models.CharField(max_length=500, null=True, verbose_name='О теме')
 
     def __str__(self):
         return self.name
 
 
-class Schedule(models.Model):
-    date_time_event = models.DateTimeField(auto_now=False)
 
-    def __str__(self):
-        return str(self.date_time_event)
 
 
 # class Status(models.Model):
@@ -37,27 +31,24 @@ class Schedule(models.Model):
 
 
 class Expert(models.Model):
-    info = models.CharField(max_length=500)
-    fio = models.CharField(max_length=100)
-    links = models.CharField(max_length=500)
-
+    info = models.CharField(max_length=500, verbose_name='О эксперте')
+    fio = models.CharField(max_length=100, verbose_name='ФИО')
+    links = models.CharField(max_length=500, verbose_name='Ссылка')
 
     def __str__(self):
         return self.fio
 
 
-
 class Event(models.Model):
-    name = models.CharField(max_length=100)
-    info = models.CharField(max_length=100, null=True)
-    topic = models.ForeignKey('Topic', on_delete=models.SET_NULL, null=True)
-    shedule = models.ForeignKey('Schedule', on_delete=models.SET_NULL, null=True)
-    expert = models.ForeignKey('Expert', on_delete=models.SET_NULL, null=True)
-    photo = models.ImageField(upload_to='img/', null=True)
+    name = models.CharField(max_length=100, verbose_name='Имя')
+    info = models.CharField(max_length=100, null=True, verbose_name='О мероприятии')
+    topic = models.ForeignKey('Topic', on_delete=models.SET_NULL, null=True, verbose_name='Тема')
+    shedule = models.DateTimeField(auto_now=False, verbose_name='Время', null=True)
+    expert = models.ForeignKey('Expert', on_delete=models.SET_NULL, null=True, verbose_name='Эксперт')
+    photo = models.ImageField(upload_to='img/event', null=True, verbose_name='Фото')
     status = models.IntegerField(verbose_name='Статус', choices=choices, null=True)
+
     # status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
-
-
 
     def __str__(self):
         return self.name
@@ -67,11 +58,23 @@ class Event(models.Model):
 
 
 
+class Club(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя')
+    info = models.CharField(max_length=500, null=True, verbose_name='О клубе')
+    photo = models.ImageField(upload_to='img/club', null=True, verbose_name='Фото')
+
+    def __str__(self):
+        return self.name
 
 
 
+class Quest(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя')
+    info = models.CharField(max_length=500, null=True, verbose_name='О мероприятии')
+    target = models.CharField(max_length=500, null=True, verbose_name='Цель')
+    deadline = models.DateTimeField(auto_now=False, verbose_name='Дедлайн')
+    photo = models.ImageField(upload_to='img/quest', null=True, verbose_name='Фото')
 
 
-
-
-
+    def __str__(self):
+        return self.name
