@@ -12,12 +12,12 @@ choices = (
 )
 
 
-class Topic(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Имя')
-    info = models.CharField(max_length=500, null=True, verbose_name='О теме')
-
-    def __str__(self):
-        return self.name
+# class Topic(models.Model):
+#     name = models.CharField(max_length=255, verbose_name='Имя')
+#     info = models.CharField(max_length=500, null=True, verbose_name='О теме')
+#
+#     def __str__(self):
+#         return self.name
 
 
 # class Status(models.Model):
@@ -40,7 +40,7 @@ class Expert(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     info = models.CharField(max_length=100, null=True, verbose_name='О мероприятии')
-    topic = models.ForeignKey('Topic', on_delete=models.SET_NULL, null=True, verbose_name='Тема')
+    club = models.ForeignKey('Club', on_delete=models.SET_NULL, null=True, verbose_name='Клуб')
     shedule = models.DateTimeField(auto_now=False, verbose_name='Время', null=True)
     expert = models.ForeignKey('Expert', on_delete=models.SET_NULL, null=True, verbose_name='Эксперт')
     photo = models.ImageField(upload_to='img/event', null=True, verbose_name='Фото')
@@ -59,6 +59,11 @@ class Club(models.Model):
     photo = models.ImageField(upload_to='img/club', null=True, verbose_name='Фото')
     user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
+    def update(self, instance, validated_data):
+        print(1111111111111111)
+        instance.name = validated_data.get('user', instance.email)
+        instance.save()
+        return instance
     def __str__(self):
         return self.name
 

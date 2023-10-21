@@ -6,7 +6,7 @@ from basefunc.models import *
 
 admin.site.register(Expert)
 admin.site.register(Event)
-admin.site.register(Topic)
+# admin.site.register(Topic)
 admin.site.register(Club)
 admin.site.register(Quest)
 
