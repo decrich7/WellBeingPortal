@@ -11,7 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
-    topic = serializers.CharField(source='topic.name')
     user = UserSerializer(many=True, read_only=True)
 
     expert_info = serializers.CharField(source='expert.info')
@@ -29,13 +28,13 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = (
-            'id', 'name', 'topic', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
+            'id', 'name','shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
 
 
-class TopicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Topic
-        fields = "__all__"
+# class TopicSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Topic
+#         fields = "__all__"
 
 
 class ExpertSerializer(serializers.ModelSerializer):
@@ -46,16 +45,6 @@ class ExpertSerializer(serializers.ModelSerializer):
 
 class ClubSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=True, read_only=True)
-
-    def update(self, instance: Club, validated_data: dict):
-        print(instance)
-        print(validated_data)
-        # instance.user = validated_data.get('user')
-        # instance.user =
-        instance.name = validated_data.get('name', instance.name)
-
-        instance.save()
-        return instance
 
     class Meta:
         model = Club

@@ -59,11 +59,6 @@ class Club(models.Model):
     photo = models.ImageField(upload_to='img/club', null=True, verbose_name='Фото')
     user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
-    def update(self, instance, validated_data):
-        print(1111111111111111)
-        instance.name = validated_data.get('user', instance.email)
-        instance.save()
-        return instance
     def __str__(self):
         return self.name
 
