@@ -31,7 +31,7 @@ const Card = ({...props}) => {
                                 {props.cardElement.info}
                             </div>
                             <div className="text-gray-500 mb-3">
-                                {props.cardElement.expert}
+                                {props.cardElement.expert_fio}
                             </div>
                             <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm ">
                                 {props.cardElement.topic}
