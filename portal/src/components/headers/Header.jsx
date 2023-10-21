@@ -31,7 +31,7 @@ const Header = () => {
                         <MyButton value={"Войти"} color={"bg-yellow-500"}/>
                     </a>
                 </div>
-                <div className="">
+                <div className="p-1">
                     <a href={"/register"}>
                         <MyButton value={"Зарегистрироваться"} color={"bg-yellow-500"}/>
                     </a>
