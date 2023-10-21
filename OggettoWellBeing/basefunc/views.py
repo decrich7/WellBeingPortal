@@ -1,7 +1,6 @@
 from rest_framework import generics, viewsets
-from .models import Event, Topic, Club, Quest, Expert, ClubMember, UserQuest
-from .serializers import EventSerializer, TopicSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, \
-    ClubMemberSerializer, UserQuestSerializer
+from .models import Event, Topic, Club, Quest, Expert
+from .serializers import EventSerializer, TopicSerializer, ClubSerializer, QuestSerializer, ExpertSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -18,6 +17,13 @@ class ClubViewSet(viewsets.ModelViewSet):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
 
+    def update(self, request, *args, **kwargs):
+        club = self.get_object()
+        print(args)
+        print(kwargs)
+        club.user.clear()
+        return super().update(request, *args, **kwargs)
+
 
 class QuestViewSet(viewsets.ModelViewSet):
     queryset = Quest.objects.all()
@@ -27,13 +33,3 @@ class QuestViewSet(viewsets.ModelViewSet):
 class ExpertViewSet(viewsets.ModelViewSet):
     queryset = Expert.objects.all()
     serializer_class = ExpertSerializer
-
-
-class ClubMemberViewSet(viewsets.ModelViewSet):
-    queryset = ClubMember.objects.all()
-    serializer_class = ClubMemberSerializer
-
-
-class UserQuestViewSet(viewsets.ModelViewSet):
-    queryset = UserQuest.objects.all()
-    serializer_class = UserQuestSerializer

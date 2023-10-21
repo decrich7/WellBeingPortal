@@ -46,6 +46,7 @@ class Event(models.Model):
     photo = models.ImageField(upload_to='img/event', null=True, verbose_name='Фото')
     status = models.IntegerField(verbose_name='Статус', choices=choices, null=True)
     user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+
     # status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -56,6 +57,7 @@ class Club(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     info = models.CharField(max_length=500, null=True, verbose_name='О клубе')
     photo = models.ImageField(upload_to='img/club', null=True, verbose_name='Фото')
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
         return self.name
@@ -67,16 +69,7 @@ class Quest(models.Model):
     target = models.CharField(max_length=500, null=True, verbose_name='Цель')
     deadline = models.DateTimeField(auto_now=False, verbose_name='Дедлайн')
     photo = models.ImageField(upload_to='img/quest', null=True, verbose_name='Фото')
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
         return self.name
-
-
-class ClubMember(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
-    club = models.ForeignKey(Club, on_delete=models.CASCADE, verbose_name='Клуб')
-
-
-class UserQuest(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
-    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, verbose_name='Квесты')

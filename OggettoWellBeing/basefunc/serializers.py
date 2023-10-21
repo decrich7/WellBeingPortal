@@ -1,7 +1,8 @@
 from django.conf import settings
 from rest_framework import serializers
-from .models import Event, Topic, Expert, Club, Quest, ClubMember, UserQuest
+from .models import Event, Topic, Expert, Club, Quest
 from api_authentication.models import User
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,18 +32,6 @@ class EventSerializer(serializers.ModelSerializer):
             'id', 'name', 'topic', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
 
 
-class ClubMemberSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ClubMember
-        fields = "__all__"
-
-
-class UserQuestSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserQuest
-        fields = "__all__"
-
-
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
@@ -56,12 +45,26 @@ class ExpertSerializer(serializers.ModelSerializer):
 
 
 class ClubSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=True, read_only=True)
+
+    def update(self, instance: Club, validated_data: dict):
+        print(instance)
+        print(validated_data)
+        # instance.user = validated_data.get('user')
+        # instance.user =
+        instance.name = validated_data.get('name', instance.name)
+
+        instance.save()
+        return instance
+
     class Meta:
         model = Club
-        fields = "__all__"
+        fields = ('name', 'info', 'photo', 'user')
 
 
 class QuestSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=True, read_only=True)
+
     class Meta:
         model = Quest
-        fields = "__all__"
+        fields = ('name', 'info', 'target', 'deadline', 'photo', 'user')
