@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Event, Expert, Club, Quest, Feedback, MeetMaterials
+from .models import Event, Expert, Club, Quest, Feedback, MeetMaterials, SuggestExpert, MeetQuestions
 from api_authentication.models import User
 
 
@@ -15,14 +15,6 @@ class EventSerializer(serializers.ModelSerializer):
     expert_info = serializers.CharField(source='expert.info')
     expert_fio = serializers.CharField(source='expert.fio')
     expert_links = serializers.CharField(source='expert.links')
-
-    # status = serializers.CharField(source='status.status')
-
-    # def update(self, instance, validated_data):
-    #     instance.status = validated_data.get('status', instance.status)
-    #
-    #     instance.save()
-    #     return instance
 
     class Meta:
         model = Event
@@ -66,4 +58,16 @@ class QuestSerializer(serializers.ModelSerializer):
 class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeetMaterials
+        fields = '__all__'
+
+
+class SuggestExpertSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SuggestExpert
+        fields = '__all__'
+
+
+class MeetQuestionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MeetQuestions
         fields = '__all__'

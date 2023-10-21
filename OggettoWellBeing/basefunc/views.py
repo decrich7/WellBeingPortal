@@ -4,9 +4,10 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 
 from api_authentication.models import User
-from .models import Event, Club, Quest, Expert, Feedback, MeetMaterials
+from .models import Event, Club, Quest, Expert, Feedback, MeetMaterials, SuggestExpert, MeetQuestions
+
 from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, \
-    FeedbackSerializer, VideoSerializer
+    FeedbackSerializer, VideoSerializer, SuggestExpertSerializer, MeetQuestionsSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -32,6 +33,21 @@ class ExpertViewSet(viewsets.ModelViewSet):
 class FeedbackViewSet(viewsets.ModelViewSet):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
+
+
+class SuggestExpertViewSet(viewsets.ModelViewSet):
+    queryset = SuggestExpert.objects.all()
+    serializer_class = SuggestExpertSerializer
+
+
+class MeetQuestionsViewSet(viewsets.ModelViewSet):
+    queryset = MeetQuestions.objects.all()
+    serializer_class = MeetQuestionsSerializer
+
+
+class VideoViewSet(viewsets.ModelViewSet):
+    queryset = MeetMaterials.objects.all()
+    serializer_class = VideoSerializer
 
 
 class ClubAPI(APIView):
@@ -75,8 +91,3 @@ class QuestAPI(APIView):
         return JsonResponse({
             **serializator.data
         })
-
-
-class VideoViewSet(viewsets.ModelViewSet):
-    queryset = MeetMaterials.objects.all()
-    serializer_class = VideoSerializer

@@ -7,13 +7,13 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Oggetto Backend API",
-      default_version='v1',
-      description="Backend endpoints",
-      ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+    openapi.Info(
+        title="Oggetto Backend API",
+        default_version='v1',
+        description="Backend endpoints",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
@@ -25,3 +25,4 @@ urlpatterns = [
     path('survey/', include('survey.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)

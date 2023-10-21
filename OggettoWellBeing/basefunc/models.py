@@ -1,11 +1,9 @@
-import os
-
 from django.conf import settings
-from django.db import models
-
-# Create your models here.
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 choices = (
     (1, 'Будет'),
@@ -20,22 +18,6 @@ rating = (
     (4, 'В принципе неплохо.'),
     (5, 'Всем доволен!')
 )
-
-
-# class Topic(models.Model):
-#     name = models.CharField(max_length=255, verbose_name='Имя')
-#     info = models.CharField(max_length=500, null=True, verbose_name='О теме')
-#
-#     def __str__(self):
-#         return self.name
-
-
-# class Status(models.Model):
-#     status = models.CharField(max_length=70)
-#
-#
-#     def __str__(self):
-#         return self.status
 
 
 class Expert(models.Model):
@@ -59,10 +41,23 @@ class Event(models.Model):
     link = models.CharField(max_length=200, verbose_name='Ссылка на мероприятие', default='youtube.com')
     text_materials = models.CharField(max_length=200, verbose_name='Ссылка на доп. материалы', default='7-8')
 
-    # status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
-
     def __str__(self):
         return self.name
+
+
+@receiver(pre_save, sender=Event)
+def send_email_if_changed(sender, instance, **kwargs):
+    try:
+        obj = Event.objects.get(pk=instance.pk)
+    except Event.DoesNotExist:
+        print('does not exist')
+    else:
+        if instance.status == 2:
+            email_list = [user.email for user in obj.user.all()]
+            subject = 'Мероприятие началось!'
+            message = f'Сообщаем, что мероприятие {obj.name} уже идет, подключайтесь по ссылке'
+            send_mail(subject, message, settings.EMAIL_HOST_USER, email_list)
+            print('successful send email')
 
 
 class MeetMaterials(models.Model):
@@ -100,3 +95,20 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f'{self.rating} - {self.user.first_name}'
+
+
+class SuggestExpert(models.Model):
+    suggestion = models.CharField(max_length=255, verbose_name='Предложение')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+
+    def __str__(self):
+        return f'{self.suggestion} - {self.user.first_name}'
+
+
+class MeetQuestions(models.Model):
+    question = models.CharField(max_length=255, verbose_name='Предложение')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Событие')
+
+    def __str__(self):
+        return f'{self.question} - {self.user.first_name}'
