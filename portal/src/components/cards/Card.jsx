@@ -1,5 +1,6 @@
 import React from 'react';
 import {skipWaiting} from "workbox-core";
+import {Link} from "react-router-dom";
 // import {compact} from "@headlessui/react/dist/utils/render";
 
 
@@ -20,21 +21,23 @@ const Card = ({...props}) => {
                             className="cardImage flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src={props.cardElement.photo}/>
                     </div>
-                    <div className="w-[80%] h-full grid justify-items-stretch ...">
-                        <div
-                            className="title-font text-lg text-gray-900 font-bold whitespace-pre ... truncate ... max-w-sm">
-                            {props.cardElement.name}
+                    <Link to={"/cardInformations/" + props.cardElement.id}>
+                        <div className="w-[80%] h-full grid justify-items-stretch ...">
+                            <div
+                                className="title-font text-lg text-gray-900 font-bold whitespace-pre ... truncate ... max-w-sm">
+                                {props.cardElement.name}
+                            </div>
+                            <div className=" mb-4 whitespace-pre ... truncate ... max-w-sm">
+                                {props.cardElement.info}
+                            </div>
+                            <div className="text-gray-500 mb-3">
+                                {props.cardElement.expert}
+                            </div>
+                            <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm ">
+                                {props.cardElement.topic}
+                            </div>
                         </div>
-                        <div className=" mb-4 whitespace-pre ... truncate ... max-w-sm">
-                            {props.cardElement.info}
-                        </div>
-                        <div className="text-gray-500 mb-3">
-                            {props.cardElement.expert}
-                        </div>
-                        <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm ">
-                            {props.cardElement.topic}
-                        </div>
-                    </div>
+                    </Link>
                     <div className="h-full justify-end align-bottom">
                         <div className="text-right flex items-start">
                             {props.cardElement.shedule}
@@ -58,29 +61,33 @@ const Card = ({...props}) => {
                             className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src={props.cardElement.photo}/>
                     </div>
-                    <div className="flex-grow sm:pl-8">
-                        <div className="title-font font-bold text-lg text-gray-900">
-                            {props.cardElement.name}
+                    <Link to={"/cardInformations/" + props.cardElement.id}>
+                        <div className="flex-grow sm:pl-8">
+                            <div className="title-font font-bold text-lg text-gray-900">
+                                {props.cardElement.name}
+                            </div>
+                            <div className="mb-4 max-w-sm">
+                                {props.cardElement.info}
+                            </div>
+                            <div className="text-gray-500 mb-3">
+                                {props.cardElement.expert}
+                            </div>
+                            <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm">
+                                {props.cardElement.topic}
+                            </div>
                         </div>
-                        <div className="mb-4 max-w-sm">
-                            {props.cardElement.info}
-                        </div>
-                        <div className="text-gray-500 mb-3">
-                            {props.cardElement.expert}
-                        </div>
-                        <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm">
-                            {props.cardElement.topic}
-                        </div>
-                    </div>
+                    </Link>
+
                     <div className="h-full justify-end">
                         <div className="text-right flex items-end">
                             {props.cardElement.shedule}
                         </div>
                         {props.cardElement.statusPlace === "isLive" ? (
-                        <div className="bg-red-900 text-white rounded-full text-center justify-self-end p-1 max-w-sm">
-                            В эфире
-                        </div>
-                    ) : (<div></div>)}
+                            <div
+                                className="bg-red-900 text-white rounded-full text-center justify-self-end p-1 max-w-sm">
+                                В эфире
+                            </div>
+                        ) : (<div></div>)}
                     </div>
 
                 </div>

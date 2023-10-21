@@ -33,10 +33,10 @@ const MyLoginForm = () => {
                         onChange={e => setData({...data, password: e.target.value})}
                     >
                     </MyFormInput>
-
-                    <MyButton value={"Войти"}
-                              color={"bg-yellow-400"}
-                              type={"submit"}
+                    <MyButton
+                        value={"Войти"}
+                        color={"bg-yellow-400"}
+                        type={"submit"}
                     >
                     </MyButton>
                 </form>
