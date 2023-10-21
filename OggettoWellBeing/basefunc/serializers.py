@@ -16,6 +16,7 @@ class EventSerializer(serializers.ModelSerializer):
     expert_fio = serializers.CharField(source='expert.fio')
     expert_links = serializers.CharField(source='expert.links')
 
+
     # status = serializers.CharField(source='status.status')
 
     # def update(self, instance, validated_data):
@@ -27,7 +28,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = (
-            'id', 'name', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
+            'id', 'name', 'info', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
