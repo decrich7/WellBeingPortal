@@ -19,9 +19,6 @@ class Topic(models.Model):
         return self.name
 
 
-
-
-
 # class Status(models.Model):
 #     status = models.CharField(max_length=70)
 #
@@ -54,10 +51,6 @@ class Event(models.Model):
         return self.name
 
 
-
-
-
-
 class Club(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     info = models.CharField(max_length=500, null=True, verbose_name='О клубе')
@@ -67,14 +60,12 @@ class Club(models.Model):
         return self.name
 
 
-
 class Quest(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     info = models.CharField(max_length=500, null=True, verbose_name='О мероприятии')
     target = models.CharField(max_length=500, null=True, verbose_name='Цель')
     deadline = models.DateTimeField(auto_now=False, verbose_name='Дедлайн')
     photo = models.ImageField(upload_to='img/quest', null=True, verbose_name='Фото')
-
 
     def __str__(self):
         return self.name

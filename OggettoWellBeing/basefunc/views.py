@@ -1,17 +1,28 @@
-from django.shortcuts import render
-from rest_framework import generics
-# Create your views here.
-from .models import Event
-from .serializers import EventSerializer
+from rest_framework import generics, viewsets
+from .models import Event, Topic, Club, Quest, Expert
+from .serializers import EventSerializer, TopicSerializer, ClubSerializer, QuestSerializer, ExpertSerializer
 
 
-
-
-class EventAPIList(generics.ListAPIView):
+class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
 
-class EventAPIUpdate(generics.UpdateAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
+class TopicViewSet(viewsets.ModelViewSet):
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer
+
+
+class ClubViewSet(viewsets.ModelViewSet):
+    queryset = Club.objects.all()
+    serializer_class = ClubSerializer
+
+
+class QuestViewSet(viewsets.ModelViewSet):
+    queryset = Quest.objects.all()
+    serializer_class = QuestSerializer
+
+
+class ExpertViewSet(viewsets.ModelViewSet):
+    queryset = Expert.objects.all()
+    serializer_class = ExpertSerializer
