@@ -15,6 +15,7 @@ class EventSerializer(serializers.ModelSerializer):
     expert_info = serializers.CharField(source='expert.info')
     expert_fio = serializers.CharField(source='expert.fio')
     expert_links = serializers.CharField(source='expert.links')
+    club = serializers.CharField(source='club.name')
 
 
     # status = serializers.CharField(source='status.status')
