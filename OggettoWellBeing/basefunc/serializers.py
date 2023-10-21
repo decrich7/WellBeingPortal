@@ -11,7 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
-    topic = serializers.CharField(source='topic.name')
     user = UserSerializer(many=True, read_only=True)
 
     expert_info = serializers.CharField(source='expert.info')
@@ -29,7 +28,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = (
-            'id', 'name', 'topic', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
+            'id', 'name', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
 
 
 # class TopicSerializer(serializers.ModelSerializer):
