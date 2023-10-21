@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'social_django',
     'drf_social_oauth2',
     'basefunc.apps.BasefuncConfig',
+    'survey.apps.SurveyConfig'
 ]
 
 MIDDLEWARE = [
