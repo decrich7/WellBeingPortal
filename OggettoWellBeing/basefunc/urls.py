@@ -16,3 +16,7 @@ urlpatterns = [
     path('api/v1/event-api/<int:pk>', EventAPI.as_view()),
     path('api/v1/quest-api/<int:pk>', QuestAPI.as_view()),
 ]
+# urlpatterns = [
+#     path('', GetQuestion.as_view()),
+#     path('answer/', QuestionAnswer.as_view()),
+# ]
