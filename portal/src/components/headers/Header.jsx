@@ -4,35 +4,36 @@ import MyRouteButton from "../UI/buttons/MyRouteButton";
 
 const Header = () => {
     return (
-        <div className="w-[100%] flex flex-row text-center place-items-center mt-5" >
-            <div className="w-1/6 ml-2">
-                <a href="/" className="">
+        <div className="w-[75%] flex flex-wrap p-5 flex-col md:flex-row items-center" >
+            <div className="min-w-1 w-1/6 ml-2 min-w-[120px] min-h-[27px]">
+                <a href="/" className="flex title-font font-medium items-center mb-4 md:mb-0">
                    <img
                        className=""
                         src="https://oggetto.design/images/layout/oggetto-logo/rus-2x.png"
                         alt="href-logo"/>
                 </a>
             </div>
-            <div className="w-1/5 ">
-                <MyRouteButton
-                href={"/"}
-                value={"Квесты"}
-                >
-                </MyRouteButton>
-            </div >
-                <div className="w-1/5">
-                    <MyRouteButton
-                href={"/"}
-                value={"Клубы"}
-                >
-                </MyRouteButton>
+            <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-5">
+                <div className="hover:text-gray-900">
+                    <a
+                        href="/">
+                        Квесты
+                    </a>
+                </div >
+                <div className="hover:text-gray-900">
+                    <a
+                        href="/">
+                        Клубы
+                    </a>
                 </div>
-            <div className="w-1/5 ">
-                <MyButton value={"Войти"} color={"bg-yellow-500"}/>
-            </div>
-            <div className="w-1/5">
-                <MyButton value={"Зарегистрироваться"} color={"bg-yellow-500"}/>
-            </div>
+                <div className="">
+                    <MyButton value={"Войти"} color={"bg-yellow-500"}/>
+                </div>
+                <div className="">
+                    <MyButton value={"Зарегистрироваться"} color={"bg-yellow-500"}/>
+                </div>
+            </nav>
+
         </div>
     )
 }
