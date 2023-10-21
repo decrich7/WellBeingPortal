@@ -45,7 +45,7 @@ class Event(models.Model):
     expert = models.ForeignKey('Expert', on_delete=models.SET_NULL, null=True, verbose_name='Эксперт')
     photo = models.ImageField(upload_to='img/event', null=True, verbose_name='Фото')
     status = models.IntegerField(verbose_name='Статус', choices=choices, null=True)
-
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
     # status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
