@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import MyGridListButton from "../UI/buttons/MyGridListButton";
 import Cards from "../cards/Cards";
+import Club from "../clubs/Club";
 
-const MyEventList = ({...props}) => {
+const MyClubList = ({...props}) => {
     const [viewMode, setViewMode] = useState("list");
 
     const request = new XMLHttpRequest();
@@ -14,16 +15,14 @@ const MyEventList = ({...props}) => {
     if (request.status === 200) {
          myList = JSON.parse(request.responseText).results;
     }
-
-
     return (
         <div className="mt-5 w-full ">
             <MyGridListButton setViewMode={setViewMode} viewMode={viewMode}></MyGridListButton>
             <div className="text-center items-center justify-center">
-                    <Cards cardList={myList} typeView={viewMode} EventList={props.EventList}/>
+                    <Club cardList={myList} typeView={viewMode} ClubList={props.ClubList}/>
             </div>
         </div>
     );
 };
 
-export default MyEventList;
+export default MyClubList;
