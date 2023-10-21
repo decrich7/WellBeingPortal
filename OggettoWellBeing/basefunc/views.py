@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 
 from api_authentication.models import User
 from .models import Event, Club, Quest, Expert
-from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer
+from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, UserSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -43,10 +43,23 @@ class ClubAPI(APIView):
         user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
         current_club.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
                                                       "last_name": user.last_name})
-        print(current_club.user.all().values())
-        print(serializers.serialize('json', current_club.user.all().values()))
+        serializator = ClubSerializer(current_club)
         return JsonResponse({
             'name': current_club.name,
             'info': current_club.info,
-            'user': current_club.user.all().values_list()
+            'user': serializator.data
+        })
+
+
+class EventAPI(APIView):
+    def post(self, request, **kwargs):
+        query_data: dict = request.data
+        current_event: Union[Club, None] = Event.objects.get(pk=kwargs.get("pk"))
+        user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
+        current_event.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
+                                                      "last_name": user.last_name})
+
+        serializator = EventSerializer(current_event)
+        return JsonResponse({
+            **serializator.data
         })

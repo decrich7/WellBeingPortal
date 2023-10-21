@@ -19,11 +19,11 @@ class EventSerializer(serializers.ModelSerializer):
 
     # status = serializers.CharField(source='status.status')
 
-    def update(self, instance, validated_data):
-        instance.status = validated_data.get('status', instance.status)
-
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     instance.status = validated_data.get('status', instance.status)
+    #
+    #     instance.save()
+    #     return instance
 
     class Meta:
         model = Event
@@ -44,7 +44,7 @@ class ExpertSerializer(serializers.ModelSerializer):
 
 
 class ClubSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=True, read_only=True)
+    user = UserSerializer(many=True)
 
     class Meta:
         model = Club
