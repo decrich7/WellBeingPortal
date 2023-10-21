@@ -55,7 +55,7 @@ let cardsList = [
 const Cards = (...props) => {
     return (
         <div>
-            {props[0].typeView == "list" ? (
+            {props[0].typeView === "list" ? (
                 <div className="flex flex-wrap justify-center items-stretch">
                     {
                         cardsList.map((el, index) => (

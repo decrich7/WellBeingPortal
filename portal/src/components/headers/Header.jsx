@@ -15,16 +15,10 @@ const Header = () => {
             </div>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-5">
                 <div className="hover:text-gray-900">
-                    <a
-                        href="/">
-                        Квесты
-                    </a>
+                    <MyRouteButton value={"Квесты"} href={"/quests"}></MyRouteButton>
                 </div>
                 <div className="hover:text-gray-900">
-                    <a
-                        href="/">
-                        Клубы
-                    </a>
+                    <MyRouteButton value={"Клубы"} href={"/clubs"}></MyRouteButton>
                 </div>
                 <div className="p-2">
                     <a href={"/login"}>
