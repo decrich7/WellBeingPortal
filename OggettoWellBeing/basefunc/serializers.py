@@ -28,7 +28,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = (
-            'id', 'name', 'info', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user')
+            'id', 'name', 'info', 'shedule', 'expert_info', 'expert_fio', 'expert_links', 'photo', 'status', 'user', 'club')
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
