@@ -1,5 +1,6 @@
 import React from 'react';
 import MyButton from "../UI/buttons/MyButton";
+import MyRouteButton from "../UI/buttons/MyRouteButton";
 
 const Header = () => {
     return (
@@ -13,22 +14,20 @@ const Header = () => {
                 </a>
             </div>
             <div className="w-1/5 ">
-                <a className=""
-                    href="/">
-                    Квесты
-                </a>
+                <MyRouteButton
+                href={"/"}
+                value={"Квесты"}
+                >
+                </MyRouteButton>
             </div >
                 <div className="w-1/5">
-                    <a
-                        href="/">
-                        Клубы
-                    </a>
+                    <MyRouteButton
+                href={"/"}
+                value={"Клубы"}
+                >
+                </MyRouteButton>
                 </div>
             <div className="w-1/5 ">
-                {/*<a*/}
-                {/*    href="/">*/}
-                {/*    Войти*/}
-                {/*</a>*/}
                 <MyButton value={"Войти"} color={"bg-yellow-500"}/>
             </div>
             <div className="w-1/5">

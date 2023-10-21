@@ -4,7 +4,7 @@ import MyInput from "./inputs/MyInput";
 
 const MyFormInput = ({...props}) => {
     return (
-        <div className="relative flex-grow w-full">
+        <div className="space-y-2">
             <MyLabel value={props.labelValue}
             ></MyLabel>
             <MyInput value={props.inputValue}
