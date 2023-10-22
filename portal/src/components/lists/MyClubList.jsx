@@ -3,6 +3,7 @@ import MyGridListButton from "../UI/buttons/MyGridListButton";
 import Cards from "../cards/Cards";
 import Clubs from "../clubs/Clubs";
 
+
 const MyClubList = ({...props}) => {
     const [viewMode, setViewMode] = useState("list");
 

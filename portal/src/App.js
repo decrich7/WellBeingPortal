@@ -9,6 +9,8 @@ import MyRegisterForm from "./components/forms/MyRegisterForm";
 import MyLoginForm from "./components/forms/MyLoginForm";
 import MySlider from "./components/sliders/MySlider";
 import CardInfo from "./components/cards/CardInfo";
+import ClubInfo from "./components/clubs/ClubInfo";
+import QustInfo from "./components/quests/QustInfo";
 
 
 
@@ -55,6 +57,28 @@ function App() {
                             <div className="flex items-center flex-col justify-center w-5/6">
                                 <Header></Header>
                                 <CardInfo ></CardInfo>
+                            </div>
+                        </div>
+                    )}>
+                    </Route>
+                </Route>
+                <Route path="/questInformations">
+                    <Route path=":id" element={(
+                        <div className="App flex justify-center space-y-4">
+                            <div className="flex items-center flex-col justify-center w-5/6">
+                                <Header></Header>
+                                <QustInfo></QustInfo>
+                            </div>
+                        </div>
+                    )}>
+                    </Route>
+                </Route>
+                <Route path="/clubInformations">
+                    <Route path=":id" element={(
+                        <div className="App flex justify-center space-y-4">
+                            <div className="flex items-center flex-col justify-center w-5/6">
+                                <Header></Header>
+                                <ClubInfo></ClubInfo>
                             </div>
                         </div>
                     )}>
