@@ -1,9 +1,9 @@
 import React from 'react';
-import Card from "./Card";
 import Club from "./Club";
 
 
 const Clubs = ({...props}) => {
+    console.log(props.clubList)
     if (props.clubList) {
         return (
 

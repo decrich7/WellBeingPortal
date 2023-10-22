@@ -6,10 +6,11 @@ export const clientId = "888731677354-09dpmnh450d511958dgs5hrml7oj089b.apps.goog
 
 export  const onSuccess = async (res) => {
     console.log('succzddgsfgess:', res.accessToken);
+
     const user = {
         "grant_type": "convert_token",
-        "client_id": "VG2Qh1ndtfmzIrQy19ZezZb8FsUueaJTcCbiqsiN",
-        "client_secret": "ZcTInKJglrAJZAvk3dk6E5VHTSZqjcPvtRTZVytnl22ekU5TfqMlk1EoCVodVFoauqY6C22uz1FRmEldcc7GgbHkl4NQuzKeJ91EMvEYCj1SpzOWgu3i35R7vHWqwrO1",
+        "client_id": "9HRu3Kk0cN4R9EIXkxeqpidtS4jd0X3xzskiiUd1",
+        "client_secret": "5DEXwYTbmaKFreNRUYwBQmDk5wUPRYMP2ao3M6J4xMMR0FqJOWEWTkxDyu7XKAqRx52ZP55dgaKOmlXJiCKY34zMsEsPn9Ce2lEuyfiMQaTq6v1Pl8YXU7glLdgei1e2",
         "backend": "google-oauth2",
         "token": res.accessToken
     };

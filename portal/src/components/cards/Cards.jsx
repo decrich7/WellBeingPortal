@@ -3,6 +3,7 @@ import Card from "./Card";
 
 
 const Cards = ({...props}) => {
+console.log(props.cardList)
     if (props.cardList) {
         return (
 

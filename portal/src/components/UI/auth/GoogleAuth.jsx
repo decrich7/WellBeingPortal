@@ -1,18 +1,51 @@
-import React from 'react';
-import {clientId, onFailure, onSuccess} from "../../../tools/login";
+import axios from "axios";
 import GoogleLogin from "react-google-login";
 
+
+
 const GoogleAuth = () => {
+    const clientId = "888731677354-09dpmnh450d511958dgs5hrml7oj089b.apps.googleusercontent.com";
+    const onSuccess = async (res) => {
+        console.log('succzddgsfgess:', res.accessToken);
+        const user = {
+            "grant_type": "convert_token",
+            "client_id": "VG2Qh1ndtfmzIrQy19ZezZb8FsUueaJTcCbiqsiN",
+            "client_secret": "ZcTInKJglrAJZAvk3dk6E5VHTSZqjcPvtRTZVytnl22ekU5TfqMlk1EoCVodVFoauqY6C22uz1FRmEldcc7GgbHkl4NQuzKeJ91EMvEYCj1SpzOWgu3i35R7vHWqwrO1",
+            "backend": "google-oauth2",
+            "token": res.accessToken
+        };
+        console.log(user)
+        const {data} = await axios.post('http://localhost:8000/api-auth/auth/convert-token/', user, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }, {withCredentials: true});
+
+        console.log(data, data['access_token'])
+        axios.defaults.headers.common['Authorization'] = `Bearer ${data['access_token']}`;
+        localStorage.clear();
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('refresh_token', data.refresh_token);
+        window.location.href = '/'
+    }
+
+    const onFailure = (err) => {
+        console.log('failed:', err);
+    };
+
+
     return (
-        <GoogleLogin
-            clientId={clientId}
-            buttonText="Войти с помощью Google"
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={'single_host_origin'}
+        <div className="Auth-form-container">
+            <GoogleLogin
+                clientId={clientId}
+                buttonText="Sign in with Google"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'}
 
-        />
-    );
-};
+            />
+        </div>
 
-export default GoogleAuth;
+    )
+}
+export default GoogleAuth
