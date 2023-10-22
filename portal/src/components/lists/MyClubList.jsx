@@ -9,6 +9,7 @@ const MyClubList = ({...props}) => {
     const request = new XMLHttpRequest();
     const url = 'http://127.0.0.1:8000/api/v1/club/';
     request.open("GET", url, false); // false makes the request synchronous
+    request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
     request.send(null);
     let myList;
 
