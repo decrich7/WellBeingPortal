@@ -8,6 +8,7 @@ const MyQuestsList = ({...props}) => {
     const request = new XMLHttpRequest();
     const url = 'http://127.0.0.1:8000/api/v1/quest/';
     request.open("GET", url, false);
+    request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
     request.send(null);
     let myList;
 

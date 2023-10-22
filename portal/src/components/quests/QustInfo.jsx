@@ -11,6 +11,7 @@ const QuestInfo = ({...props}) => {
     const url = 'http://127.0.0.1:8000/api/v1/quest/';
     console.log(url + id.toString())
     request.open("GET", url + id.toString(), false); // false makes the request synchronous
+    request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
     request.send(null);
     let curEvent;
 
@@ -20,7 +21,11 @@ const QuestInfo = ({...props}) => {
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        
+        let http = new XMLHttpRequest();
+        const url = "http://127.0.0.1:8000/api/v1/quest-api/" + id.toString()
+        http.open("POST", url, false);
+        http.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
+        http.send();
     };
 
     return (<div className="CardInformations items-start w-full">

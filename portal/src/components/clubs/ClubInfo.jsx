@@ -20,7 +20,11 @@ const ClubInfo = ({...props}) => {
     }
     let handleSubmit = (e) => {
         e.preventDefault();
-
+        let http = new XMLHttpRequest();
+        const url = "http://127.0.0.1:8000/api/v1/club-api/" + id.toString()
+        http.open("POST", url, false);
+        http.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
+        http.send();
     };
     return (<div className="CardInformations items-start w-full">
             <div>
