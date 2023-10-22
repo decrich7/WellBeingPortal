@@ -46,7 +46,7 @@ class ClubSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Club
-        fields = ('name', 'info', 'photo', 'user')
+        fields = ('id','name', 'info', 'photo', 'user')
 
 
 class QuestSerializer(serializers.ModelSerializer):
@@ -54,7 +54,7 @@ class QuestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quest
-        fields = ('name', 'info', 'target', 'deadline', 'photo', 'user')
+        fields = ('id', 'name', 'info', 'target', 'deadline', 'photo', 'user')
 
 
 class VideoSerializer(serializers.ModelSerializer):
