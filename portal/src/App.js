@@ -4,6 +4,7 @@ import Header from "./components/headers/Header";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MyEventList from "./components/lists/MyEventList";
 import MyClubList from "./components/lists/MyClubList";
+import MyQuestsList from "./components/lists/MyQuestsList";
 import MyRegisterForm from "./components/forms/MyRegisterForm";
 import MyLoginForm from "./components/forms/MyLoginForm";
 import MySlider from "./components/sliders/MySlider";
@@ -71,6 +72,7 @@ function App() {
                     <div className="App flex justify-center space-y-4">
                         <div className="flex items-center flex-col justify-center w-5/6">
                             <Header></Header>
+                            <MyQuestsList></MyQuestsList>
                         </div>
                     </div>}>
                 </Route>

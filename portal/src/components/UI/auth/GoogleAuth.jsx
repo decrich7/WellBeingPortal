@@ -1,10 +1,22 @@
 import axios from "axios";
 import GoogleLogin from "react-google-login";
-
+import {useEffect} from "react";
+import {gapi} from "gapi-script";
 
 
 const GoogleAuth = () => {
     const clientId = "888731677354-09dpmnh450d511958dgs5hrml7oj089b.apps.googleusercontent.com";
+
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+            });
+        }
+
+        gapi.load('client:auth2', start);
+    }, []);
     const onSuccess = async (res) => {
         console.log('succzddgsfgess:', res.accessToken);
         const user = {
@@ -15,7 +27,8 @@ const GoogleAuth = () => {
             "token": res.accessToken
         };
         console.log(user)
-        const {data} = await axios.post('http://localhost:8000/api-auth/auth/convert-token/', user, {
+
+        const {data} = await axios.post('http://127.0.0.1:8000/api-auth/auth/convert-token/', user, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -48,4 +61,5 @@ const GoogleAuth = () => {
 
     )
 }
+
 export default GoogleAuth
