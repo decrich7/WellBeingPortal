@@ -1,6 +1,9 @@
 from typing import Union
+
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from survey.models import Question, Choice, Answer
@@ -8,11 +11,25 @@ from api_authentication.models import User
 from .models import Event, Club, Quest, Expert, Feedback, MeetMaterials, SuggestExpert, MeetQuestions
 
 from .serializers import EventSerializer, ClubSerializer, QuestSerializer, ExpertSerializer, \
-    FeedbackSerializer, VideoSerializer, SuggestExpertSerializer, MeetQuestionsSerializer
+    FeedbackSerializer, VideoSerializer, SuggestExpertSerializer, MeetQuestionsSerializer, UserSerializer
+
+
+@api_view(["GET"])
+@login_required
+def return_current_user(request):
+    serialized_data = UserSerializer(request.user).data
+    try:
+        profile_picture = 'http://' + request.get_host() + request.user.profile_picture.url
+    except ValueError:
+        profile_picture = 'no avatar'
+    return JsonResponse({
+        **serialized_data,
+        'login': True,
+        'profile_picture': profile_picture
+    })
 
 
 class EventViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
@@ -60,7 +77,7 @@ class VideoViewSet(viewsets.ModelViewSet):
 
 
 class StatisticAPI(APIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, **kwargs):
         question_id = request.data.get('q_id')
@@ -125,7 +142,6 @@ class ClubAPI(APIView):
 
 
 class EventAPI(APIView):
-    permission_classes = (IsAuthenticated,)
 
     def post(self, request, **kwargs):
         query_data: dict = request.data

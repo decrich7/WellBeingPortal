@@ -3,7 +3,7 @@ from rest_framework import routers
 
 from .views import (EventViewSet, QuestViewSet, ClubViewSet, ExpertViewSet, ClubAPI, EventAPI, QuestAPI,
                     FeedbackViewSet, VideoViewSet, SuggestExpertViewSet, MeetQuestionsViewSet, StatisticAPI,
-                    StatAmountSuggest, StatAmountMeetQuestions, StatAmountFeedback)
+                    StatAmountSuggest, StatAmountMeetQuestions, StatAmountFeedback, return_current_user)
 
 router = routers.SimpleRouter()
 router.register(r'event', EventViewSet)
@@ -24,4 +24,5 @@ urlpatterns = [
     path('api/v1/stat-sugger', StatAmountSuggest.as_view()),
     path('api/v1/stat-meet-questions', StatAmountMeetQuestions.as_view()),
     path('api/v1/stat-feedback', StatAmountFeedback.as_view()),
+    path('api/v1/me', return_current_user)
 ]
