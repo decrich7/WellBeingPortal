@@ -9,8 +9,8 @@ export  const onSuccess = async (res) => {
 
     const user = {
         "grant_type": "convert_token",
-        "client_id": "9HRu3Kk0cN4R9EIXkxeqpidtS4jd0X3xzskiiUd1",
-        "client_secret": "5DEXwYTbmaKFreNRUYwBQmDk5wUPRYMP2ao3M6J4xMMR0FqJOWEWTkxDyu7XKAqRx52ZP55dgaKOmlXJiCKY34zMsEsPn9Ce2lEuyfiMQaTq6v1Pl8YXU7glLdgei1e2",
+        "client_id": "6NGQtyzymASrfsaC6VKOjmCo9eavkOgmRC9onshG",
+        "client_secret": "I32vpeOhrLImeRU8LFxSbqUl110Dbl9mXyvfCqfHatpLSVvL88PJ7r42bq4O8dNMrTgjabDV5Rr1UkDoHhs2U6zTFa0jmnsRtynw91hsApx2gNuJylwOjvjleWd6eISl",
         "backend": "google-oauth2",
         "token": res.accessToken
     };

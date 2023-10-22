@@ -7,7 +7,8 @@ const CardInfo = ({...props}) => {
     const request = new XMLHttpRequest();
     const url = 'http://127.0.0.1:8000/api/v1/event/';
     console.log(url + id.toString())
-    request.open("GET", url + id.toString(), false); 
+    request.open("GET", url + id.toString(), false); // false makes the request synchronous
+    request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
     request.send(null);
     let curEvent;
 

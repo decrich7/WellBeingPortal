@@ -21,8 +21,8 @@ const GoogleAuth = () => {
         console.log('succzddgsfgess:', res.accessToken);
         const user = {
             "grant_type": "convert_token",
-            "client_id": "VG2Qh1ndtfmzIrQy19ZezZb8FsUueaJTcCbiqsiN",
-            "client_secret": "ZcTInKJglrAJZAvk3dk6E5VHTSZqjcPvtRTZVytnl22ekU5TfqMlk1EoCVodVFoauqY6C22uz1FRmEldcc7GgbHkl4NQuzKeJ91EMvEYCj1SpzOWgu3i35R7vHWqwrO1",
+            "client_id": "6NGQtyzymASrfsaC6VKOjmCo9eavkOgmRC9onshG",
+            "client_secret": "I32vpeOhrLImeRU8LFxSbqUl110Dbl9mXyvfCqfHatpLSVvL88PJ7r42bq4O8dNMrTgjabDV5Rr1UkDoHhs2U6zTFa0jmnsRtynw91hsApx2gNuJylwOjvjleWd6eISl",
             "backend": "google-oauth2",
             "token": res.accessToken
         };
