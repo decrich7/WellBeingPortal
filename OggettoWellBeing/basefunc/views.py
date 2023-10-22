@@ -113,7 +113,7 @@ class ClubAPI(APIView):
     def post(self, request, **kwargs):
         query_data: dict = request.data
         current_club: Union[Club, None] = Club.objects.get(pk=kwargs.get("pk"))
-        user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
+        user: Union[User, None] = User.objects.get(email=request.user.email)
         current_club.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
                                                       "last_name": user.last_name})
         serializator = ClubSerializer(current_club)
@@ -130,7 +130,7 @@ class EventAPI(APIView):
     def post(self, request, **kwargs):
         query_data: dict = request.data
         current_event: Union[Club, None] = Event.objects.get(pk=kwargs.get("pk"))
-        user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
+        user: Union[User, None] = User.objects.get(email=request.user.email)
         current_event.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
                                                        "last_name": user.last_name})
 
@@ -146,7 +146,7 @@ class QuestAPI(APIView):
     def post(self, request, **kwargs):
         query_data: dict = request.data
         current_quest: Union[Club, None] = Quest.objects.get(pk=kwargs.get("pk"))
-        user: Union[User, None] = User.objects.get(email=query_data.get("user")[0].get("email"))
+        user: Union[User, None] = User.objects.get(email=request.user.email)
         current_quest.user.add(user, through_defaults={"email": user.email, "first_name": user.first_name,
                                                        "last_name": user.last_name})
 
