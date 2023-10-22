@@ -25,19 +25,9 @@ const Club = ({...props}) => {
                             <div className=" mb-4 whitespace-pre ... truncate ... max-w-sm">
                                 {props.clubElement.info}
                             </div>
-                            <div className="text-gray-500 mb-3">
-                                {props.clubElement.expert_fio}
-                            </div>
-                            <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm ">
-                                {props.cardElement.club}
-                            </div>
+
                         </div>
                     </Link>
-                    <div className="h-full justify-end align-bottom">
-                        <div className="text-right flex items-start">
-                            {props.clubElement.shedule}
-                        </div>
-                    </div>
                 </div>
             </div>
         )
@@ -59,21 +49,8 @@ const Club = ({...props}) => {
                             <div className="mb-4 max-w-sm">
                                 {props.clubElement.info}
                             </div>
-                            <div className="text-gray-500 mb-3">
-                                {props.clubElement.expert_fio}
-                            </div>
-                            <div className="text-white bg-yellow-300 rounded-full text-center justify-start max-w-sm">
-                                {props.clubElement.club}
-                            </div>
                         </div>
                     </Link>
-
-                    <div className="h-full justify-end">
-                        <div className="text-right flex items-end">
-                            {props.clubElement.shedule}
-                        </div>
-                    </div>
-
                 </div>
             </div>
         )
