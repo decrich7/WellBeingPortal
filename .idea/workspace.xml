@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40a79a16-dc2a-4f37-a145-604ec483c5dc" name="Changes" comment="add google auth" />
+    <list default="true" id="40a79a16-dc2a-4f37-a145-604ec483c5dc" name="Changes" comment="pre pre pre final">
+      <change beforePath="$PROJECT_DIR$/portal/src/components/cards/CardInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal/src/components/cards/CardInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/src/components/clubs/ClubInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal/src/components/clubs/ClubInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/src/components/lists/MyQuestsList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal/src/components/lists/MyQuestsList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/src/components/quests/QustInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal/src/components/quests/QustInfo.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697943246703</updated>
       <workItem from="1697943247789" duration="34000" />
-      <workItem from="1697943304382" duration="4517000" />
+      <workItem from="1697943304382" duration="7507000" />
     </task>
     <task id="LOCAL-00001" summary="add google auth">
       <option name="closed" value="true" />
@@ -63,7 +68,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697947848759</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="pre pre pre final">
+      <option name="closed" value="true" />
+      <created>1697948451703</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697948451703</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,6 +95,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add google auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="add google auth" />
+    <MESSAGE value="pre pre pre final" />
+    <option name="LAST_COMMIT_MESSAGE" value="pre pre pre final" />
   </component>
 </project>
